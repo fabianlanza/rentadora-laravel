@@ -1,5 +1,51 @@
 <template>
-    <div>
-        <h1>Bienvenido a Laravel con Inertia y Vue</h1>
-    </div>
+    <v-card>
+        <v-layout>
+            <v-navigation-drawer
+                expand-on-hover
+                rail
+            >
+                <v-list>
+                    <v-list-item
+                        prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
+                        subtitle="fabianlanza@gmail.com"
+                        title="Sandra Adams"
+                    ></v-list-item>
+                </v-list>
+
+                <v-divider></v-divider>
+
+                <v-list density="compact" nav>
+                    <v-list-item prepend-icon="mdi-hospital" title="Menu" value="myfiles"></v-list-item>
+                    <v-list-item prepend-icon="mdi-account-multiple" title="Shared with me" value="shared"></v-list-item>
+                    <v-list-item prepend-icon="mdi-star" title="Starred" value="starred"></v-list-item>
+                </v-list>
+            </v-navigation-drawer>
+
+            <v-app>
+                <h1>Bienvenido</h1>
+            </v-app>
+        </v-layout>
+    </v-card>
 </template>
+
+
+
+<script>
+export default {
+    name: "Home",
+    props: {
+        registros: {
+            type: Array,
+            default: () => []
+        },
+    },
+    data(){
+
+    }
+}
+</script>
+
+<style scoped>
+
+</style>
