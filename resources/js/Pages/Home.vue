@@ -34,7 +34,7 @@
                 <v-row class="d-flex align-center" no-gutters>
                     <!-- Columna de texto a la izquierda -->
                     <v-col cols="12" md="6" class="text-center text-md-left">
-                        <h1 class="display-2 font-weight-bold custom-title">Bienvenidos a ViaCar</h1>
+                        <h1 class="display-2 font-weight-bold custom-title">Bienvenidos a VíaCar</h1>
                         <h1 class="font-weight-regular">Tu ruta, nuestro compromio</h1>
                     </v-col>
 
@@ -44,7 +44,7 @@
                             <v-carousel-item v-for="(slide, i) in slides" :key="i">
                                 <v-img :src="images[i]" height="100%" cover class="position-relative">
                                     <div class="overlay">
-                                        <h2 class="text-h1 text-white font-weight-bold">{{ slide }}</h2>
+<!--                                        <h2 class="text-h1 text-white font-weight-bold">{{ slide }}</h2>-->
                                     </div>
                                 </v-img>
                             </v-carousel-item>
@@ -77,14 +77,17 @@
                     </v-col>
                 </v-row>
 
-                <!--Separador -->
+                <!-- Separador -->
                 <v-container>
-                    <v-divider :thickness="2" class="my-4 border-opacity-75" color="#00a9d4">
-                        <span class="divider-text">Autos</span>
-                    </v-divider>
+                    <v-divider :thickness="3" class="my-4 border-opacity-75" color="#00a9d4"></v-divider>
                 </v-container>
 
+
+                <!-- Card Porque Elegirnos-->
+                <v-card title="¿Por qué elegirnos?" elevation="6" text="Priorizamos su satisfacción y nos esforzamos por hacer que su experiencia de alquiler de coches sea lo más fluida posible. Con nuestra amplia selección de vehículos en perfecto estado, precios competitivos y un proceso de reserva sencillo, puede confiar en nosotros para satisfacer sus necesidades. Nuestro dedicado equipo de atención al cliente está disponible las 24 horas para ayudarle, garantizando que reciba la asistencia que merece. Ya sea que necesite un coche para una escapada de fin de semana o para un largo viaje por carretera, elíjanos para un viaje sin complicaciones y placentero."></v-card>
+
             </v-container>
+
 
 
             <!-- Footer -->
@@ -108,12 +111,9 @@
                 <v-divider></v-divider>
 
                 <div>
-                    {{ new Date().getFullYear() }} — <strong>ViaCar</strong>
+                    {{ new Date().getFullYear() }} — <strong>VíaCar</strong>
                 </div>
             </v-footer>
-
-
-
 
 
 
