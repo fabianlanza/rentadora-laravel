@@ -1,11 +1,12 @@
 <template>
     <v-app>
-        <v-app-bar app color="white" elevation="2">
+
+        <v-app-bar app color="#eeeeee" elevation="0">
             <v-container class="d-flex justify-space-between align-center">
 
                 <!-- Logo y titulo-->
-                <v-img src="logo.png" max-height="40" max-width="120" contain></v-img>
-                <v-btn text>ViaCar</v-btn>
+                <v-img src="/images/logo.jpeg" max-height="40" max-width="120" contain></v-img>
+<!--                <v-btn text>ViaCar</v-btn>-->
                 <v-spacer></v-spacer>
 
                 <!-- Navegación -->
@@ -14,41 +15,57 @@
                     <v-tab to="/autos">Autos</v-tab>
                     <v-tab to="/contacto">Contacto</v-tab>
                 </v-tabs>
+                <v-spacer></v-spacer>
 
-                <!-- Botones de Login y Register -->
+<!--                 Botones de Login y Register -->
                 <div class="d-flex gap-2">
-                    <v-btn color="#00a9d4" variant="outlined" to="/login">Login</v-btn>
-                    <v-btn color="#00a9d4" variant="elevated" to="/register">Register</v-btn>
+                    <v-btn color="#00a9d4" variant="elevated" to="/login">Login</v-btn>
+                    <v-btn color="#00a9d4" variant="outlined" to="/register" class="ml-2">Register</v-btn>
                 </div>
             </v-container>
         </v-app-bar>
 
 
-
         <v-main>
-            <v-container style="max-width: 60vw; margin: 0 auto;">
+
+
+            <v-container style="max-width: 75vw; margin: 0 auto;">
                 <!-- Carrusel -->
-                <v-carousel
-                    height="400"
-                    show-arrows="hover"
-                    cycle
-                    hide-delimiter-background
-                >
-                    <v-carousel-item v-for="(slide, i) in slides" :key="i">
-                        <v-img :src="images[i]" height="100%" cover class="position-relative">
-                            <div class="overlay">
-                                <h2 class="text-h1 text-white font-weight-bold">
-                                    {{ slide }}
-                                </h2>
-                                <h4 class="text-white">Tu ruta, nuestro compromiso</h4>
-                            </div>
-                        </v-img>
-                    </v-carousel-item>
-                </v-carousel>
+                <v-row class="d-flex align-center" no-gutters>
+                    <!-- Columna de texto a la izquierda -->
+                    <v-col cols="12" md="6" class="text-center text-md-left">
+                        <h1 class="display-2 font-weight-bold custom-title">Bienvenidos a ViaCar</h1>
+                        <h1 class="font-weight-regular">Tu ruta, nuestro compromio</h1>
+                    </v-col>
+
+                    <!-- Columna del carrusel a la derecha -->
+                    <v-col cols="12" md="6">
+                        <v-carousel height="400" show-arrows="hover" cycle hide-delimiter-background>
+                            <v-carousel-item v-for="(slide, i) in slides" :key="i">
+                                <v-img :src="images[i]" height="100%" cover class="position-relative">
+                                    <div class="overlay">
+                                        <h2 class="text-h1 text-white font-weight-bold">{{ slide }}</h2>
+                                    </div>
+                                </v-img>
+                            </v-carousel-item>
+                        </v-carousel>
+                    </v-col>
+                </v-row>
+
+
+                <!-- Separador -->
+                <v-container>
+                    <v-divider :thickness="3" class="my-4 border-opacity-75" color="#00a9d4">
+                        <span class="divider-text separador">Autos</span>
+                    </v-divider>
+                </v-container>
+
+
+
 
                 <!-- Tarjetas de carros -->
                 <v-row justify="center" class="mt-10">
-                    <v-col cols="12" md="4" sm="6" xs="12" v-for="n in 3" :key="n">
+                    <v-col cols="12" md="4" sm="6" xs="12" v-for="n in 6" :key="n">
                         <v-card>
                             <v-img height="180" :src="`https://source.unsplash.com/400x300/?car${n}`"></v-img>
                             <v-card-title>Carro de lujo {{ n }}</v-card-title>
@@ -59,18 +76,61 @@
                         </v-card>
                     </v-col>
                 </v-row>
+
+                <!--Separador -->
+                <v-container>
+                    <v-divider :thickness="2" class="my-4 border-opacity-75" color="#00a9d4">
+                        <span class="divider-text">Autos</span>
+                    </v-divider>
+                </v-container>
+
             </v-container>
+
+
+            <!-- Footer -->
+            <v-footer class="text-center d-flex flex-column ga-2 py-4" color="#00a9d4">
+                <div class="d-flex ga-3">
+                    <v-btn
+                        v-for="icon in icons"
+                        :key="icon"
+                        :icon="icon"
+                        density="comfortable"
+                        variant="text"
+                    ></v-btn>
+                </div>
+
+                <v-divider class="my-2" thickness="2" width="50"></v-divider>
+
+                <div class="text-caption font-weight-regular opacity-60">
+                    Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                </div>
+
+                <v-divider></v-divider>
+
+                <div>
+                    {{ new Date().getFullYear() }} — <strong>ViaCar</strong>
+                </div>
+            </v-footer>
+
+
+
+
+
+
+
+
         </v-main>
-
-
-
 
 
     </v-app>
 </template>
 
 
+
+
 <script setup>
+
+
 const slides = ['VíaCar', 'VíaCar', 'VíaCar', 'VíaCar', 'VíaCar'];
 
 const images = [
@@ -80,6 +140,16 @@ const images = [
     'https://d17f75hnd3uun3.cloudfront.net/models/undefined/slider/desktop/jimnyslider_1717205440519.png',
     'https://www.kia.com/content/dam/kwcms/mx/es/images/showroom/2024/sorento/new-home/kia-sorento-key-visual-w.jpg',
 ];
+
+const icons = [
+    'mdi-facebook',
+    'mdi-twitter',
+    'mdi-linkedin',
+    'mdi-instagram',
+]
+
+
+
 </script>
 
 
@@ -98,4 +168,22 @@ const images = [
     border-radius: 10px;
 
 }
+
+
+.custom-title{
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: Apple;
+}
+
+
+.separador{
+    font-size: 2.4rem;
+    color: #00a9d4;
+    font-family: Apple;
+}
+
+
+
+
 </style>
