@@ -30,6 +30,7 @@
 
 
             <v-container style="max-width: 75vw; margin: 0 auto;">
+
                 <!-- Carrusel -->
                 <v-row class="d-flex align-center" no-gutters>
                     <!-- Columna de texto a la izquierda -->
@@ -67,7 +68,8 @@
                 <v-row justify="center" class="mt-10">
                     <v-col cols="12" md="4" sm="6" xs="12" v-for="n in 6" :key="n">
                         <v-card>
-                            <v-img height="180" :src="`https://source.unsplash.com/400x300/?car${n}`"></v-img>
+<!--                            <v-img height="180" :src="`https://source.unsplash.com/400x300/?car${n}`"></v-img>-->
+                            <v-img height="180" :src="autos[n-1]"></v-img>
                             <v-card-title>Carro de lujo {{ n }}</v-card-title>
                             <v-card-subtitle>$ {{ n * 10000 }}</v-card-subtitle>
                             <v-card-actions>
@@ -76,6 +78,8 @@
                         </v-card>
                     </v-col>
                 </v-row>
+
+
 
                 <!-- Separador -->
                 <v-container>
@@ -133,6 +137,7 @@
 
 const slides = ['VíaCar', 'VíaCar', 'VíaCar', 'VíaCar', 'VíaCar'];
 
+// Imagenes del Carrusel
 const images = [
     'https://www.tuningblog.eu/wp-content/uploads/2023/03/Toyota-Supra-MK4-1.000-HP-Tuning-JDM-5-696x405.jpg',
     'https://www.mazdahonduras.com/images/noticias/2021/bt-50-1.jpg',
@@ -141,12 +146,26 @@ const images = [
     'https://www.kia.com/content/dam/kwcms/mx/es/images/showroom/2024/sorento/new-home/kia-sorento-key-visual-w.jpg',
 ];
 
+// Temporal, imagenes de autos. Se cambiara por autos de la Base de Datos
+const autos = [
+    'https://cdn.motor1.com/images/mgl/rKZM9O/s1/toyota-corolla-1.8-hybrid-seg.webp',
+    'https://media.ed.edmunds-media.com/chevrolet/colorado/2025/oem/2025_chevrolet_colorado_crew-cab-pickup_trail-boss_fq_oem_1_1600.jpg',
+    'https://i.pinimg.com/736x/ab/66/fa/ab66fa0183f6893b76657f867c66bcf0.jpg',
+    'https://hips.hearstapps.com/hmg-prod/images/2024-mazda-mx5-miata-rf-club-101-66743f51b53e4.jpg?crop=0.556xw:0.417xh;0.213xw,0.385xh&resize=1200:*',
+    'https://www.vdm.ford.com/content/dam/na/ford/en_us/images/escape/2025/jellybeans/2025_Escape_Active_Left.png',
+    'https://i.pinimg.com/736x/30/6a/02/306a026255ba17367d9495cf923d55c2.jpg'
+
+];
+
+// iconos del Footer
 const icons = [
     'mdi-facebook',
     'mdi-twitter',
     'mdi-linkedin',
     'mdi-instagram',
-]
+];
+
+
 
 
 
