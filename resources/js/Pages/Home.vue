@@ -12,7 +12,9 @@
                 <!-- Navegación -->
                 <v-tabs centered>
                     <v-tab to="/">Inicio</v-tab>
+                    <Link href="/autos" class="no-underline">
                     <v-tab to="/autos">Autos</v-tab>
+                    </Link>
                     <v-tab to="/contacto">Contacto</v-tab>
                 </v-tabs>
                 <v-spacer></v-spacer>
@@ -133,7 +135,7 @@
 
 
 <script setup>
-
+import { Link } from '@inertiajs/vue3';
 
 const slides = ['VíaCar', 'VíaCar', 'VíaCar', 'VíaCar', 'VíaCar'];
 
