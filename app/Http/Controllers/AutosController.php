@@ -12,7 +12,8 @@ class AutosController extends Controller
      */
     public function index()
     {
-        //
+        //Devuelve todos los autos en formato JSON
+        return response()->json(Autos::all());
     }
 
     /**

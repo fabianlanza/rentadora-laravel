@@ -36,7 +36,7 @@
                     <!-- Columna de texto a la izquierda -->
                     <v-col cols="12" md="6" class="text-center text-md-left">
                         <h1 class="display-2 font-weight-bold custom-title">Bienvenidos a VíaCar</h1>
-                        <h1 class="font-weight-regular">Tu ruta, nuestro compromio</h1>
+                        <h1 class="font-weight-regular">Tu ruta, nuestro compromiso</h1>
                     </v-col>
 
                     <!-- Columna del carrusel a la derecha -->
@@ -148,10 +148,10 @@ const images = [
 
 // Temporal, imagenes de autos. Se cambiara por autos de la Base de Datos
 const autos = [
-    'https://cdn.motor1.com/images/mgl/rKZM9O/s1/toyota-corolla-1.8-hybrid-seg.webp',
-    'https://media.ed.edmunds-media.com/chevrolet/colorado/2025/oem/2025_chevrolet_colorado_crew-cab-pickup_trail-boss_fq_oem_1_1600.jpg',
-    'https://i.pinimg.com/736x/ab/66/fa/ab66fa0183f6893b76657f867c66bcf0.jpg',
-    'https://hips.hearstapps.com/hmg-prod/images/2024-mazda-mx5-miata-rf-club-101-66743f51b53e4.jpg?crop=0.556xw:0.417xh;0.213xw,0.385xh&resize=1200:*',
+    'https://static.vecteezy.com/system/resources/thumbnails/029/946/422/small_2x/white-modern-car-isolated-on-transparent-background-3d-rendering-illustration-free-png.png',
+    'https://toyotahonduras.com/asset/images/general/nuevo-hilux/rojo_metalizado.png',
+    'https://purepng.com/public/uploads/large/purepng.com-orange-audi-r8-caraudicarvehicletransport-961524656080cbae9.png',
+    'https://www.jimshorkeymazda.com/static/brand-mazda/vehicle/2022/Mazda/MX-5-Miata-RF/MRP/Selector/2021-mx5-rf-club-soul-red-crystal.png',
     'https://www.vdm.ford.com/content/dam/na/ford/en_us/images/escape/2025/jellybeans/2025_Escape_Active_Left.png',
     'https://i.pinimg.com/736x/30/6a/02/306a026255ba17367d9495cf923d55c2.jpg'
 

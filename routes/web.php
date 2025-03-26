@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\AutosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,12 @@ use Inertia\Inertia;
 Route::get('/', function () {
 //    return view('welcome');
     return Inertia::render('Home');
+});
+
+
+//Route::get('/autos', [AutosController::class, 'index']);
+
+
+Route::get('/autos', function () {
+    return Inertia::render('Autos/index');
 });

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->longText('Detalles_desperfectos');
             $table->boolean('Disponibilidad_vehiculo');
             $table->double('Precio_base');
+            $table->string('imagen');
             $table->timestamps();
         });
     }

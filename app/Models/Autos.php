@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Autos extends Model
 {
-    use HasFactory;use SoftDeletes;
-    use softDeletes;
+    use HasFactory;
+//    use softDeletes;
     protected $fillable = [
         'marca',
         'modelo',
