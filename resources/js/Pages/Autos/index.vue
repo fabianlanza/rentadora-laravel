@@ -11,11 +11,12 @@
                 <!--                <v-btn text>ViaCar</v-btn>-->
                 <v-spacer></v-spacer>
 
-                <!-- Navegación -->
-                <v-tabs centered>
-                    <v-tab href="/">Inicio</v-tab>
-                    <v-tab to="/autos">Autos</v-tab>
-                    <v-tab to="/contacto">Contacto</v-tab>
+                <!-- Navegación Nueva usando Inertia para evitar recargar toda la pagina-->
+                <!-- Usa v-model para decirle a las tabs cual esta seleccionada -->
+                <v-tabs v-model="TabSeleccionada" centered>
+                    <v-tab tag="div" @click="$inertia.get('/')">Inicio</v-tab>
+                    <v-tab tag="div" @click="$inertia.get('/autos')">Autos</v-tab>
+                    <v-tab tag="div" @click="$inertia.get('/contacto')">Contacto</v-tab>
                 </v-tabs>
                 <v-spacer></v-spacer>
 
@@ -61,6 +62,9 @@ onMounted(async () => {
         console.error('Error al obtener autos:', error);
     }
 });
+
+// Constante para decirle a las tab que Autos esta seleccionado
+const TabSeleccionada = ref(1);
 
 // import CarCard from '@/components/CarCard.vue';
 //

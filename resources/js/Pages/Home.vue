@@ -9,13 +9,11 @@
 <!--                <v-btn text>ViaCar</v-btn>-->
                 <v-spacer></v-spacer>
 
-                <!-- Navegación -->
-                <v-tabs centered>
-                    <v-tab to="/">Inicio</v-tab>
-                    <Link href="/autos" class="no-underline">
-                    <v-tab to="/autos">Autos</v-tab>
-                    </Link>
-                    <v-tab to="/contacto">Contacto</v-tab>
+                <!-- Navegación Nueva usando Inertia para evitar recargar toda la pagina-->
+                <v-tabs v-model="TabSeleccionada" centered>
+                    <v-tab tag="div" @click="$inertia.get('/')">Inicio</v-tab>
+                    <v-tab tag="div" @click="$inertia.get('/autos')">Autos</v-tab>
+                    <v-tab tag="div" @click="$inertia.get('/contacto')">Contacto</v-tab>
                 </v-tabs>
                 <v-spacer></v-spacer>
 
@@ -56,6 +54,38 @@
                 </v-row>
 
 
+
+                <!-- 3 tarjetas de Info 100% Seguro, Servicio 24/7 y Mejores Precios -->
+                <div class="hero-features">
+                    <v-container class="text_blue-darken-2">
+                        <v-row>
+                            <v-col cols="12" md="4">
+                                <div class="feature-card">
+                                    <v-icon size="36" color="blue" class="mb-4">mdi-shield-check</v-icon>
+                                    <h3 class="text-h6 font-weight-bold mb-2">100% Seguro</h3>
+                                    <p class="text-body-2 text-grey-darken-1">Vehículos asegurados y mantenimiento regular</p>
+                                </div>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                                <div class="feature-card">
+                                    <v-icon size="36" color="primary" class="mb-4">mdi-clock-fast</v-icon>
+                                    <h3 class="text-h6 font-weight-bold mb-2">Servicio 24/7</h3>
+                                    <p class="text-body-2 text-grey-darken-1">Asistencia y soporte en cualquier momento</p>
+                                </div>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                                <div class="feature-card">
+                                    <v-icon size="36" color="primary" class="mb-4">mdi-cash-multiple</v-icon>
+                                    <h3 class="text-h6 font-weight-bold mb-2">Mejores Precios</h3>
+                                    <p class="text-body-2 text-grey-darken-1">Tarifas competitivas y transparentes</p>
+                                </div>
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                </div>
+
+
+
                 <!-- Separador -->
                 <v-container>
                     <v-divider :thickness="3" class="my-4 border-opacity-75" color="#00a9d4">
@@ -87,6 +117,7 @@
                 <v-container>
                     <v-divider :thickness="3" class="my-4 border-opacity-75" color="#00a9d4"></v-divider>
                 </v-container>
+
 
 
                 <!-- Card Porque Elegirnos-->
@@ -136,6 +167,7 @@
 
 <script setup>
 import { Link } from '@inertiajs/vue3';
+import {ref} from "vue";
 
 const slides = ['VíaCar', 'VíaCar', 'VíaCar', 'VíaCar', 'VíaCar'];
 
@@ -167,6 +199,8 @@ const icons = [
     'mdi-instagram',
 ];
 
+// Constante para decirle a las tab Inicio esta selecionado
+const TabSeleccionada = ref(0);
 
 
 
@@ -204,7 +238,25 @@ const icons = [
     font-family: Apple;
 }
 
+.hero-features {
+    position: relative;
+    margin-top: -80px;
+    z-index: 2;
+    margin-top: 40px;
+}
 
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    height: 100%;
+    transition: transform 0.3s ease;
+}
 
+.feature-card:hover {
+    transform: translateY(-5px);
+}
 
 </style>
