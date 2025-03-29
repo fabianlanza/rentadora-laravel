@@ -24,6 +24,13 @@ Route::get('/', function () {
 //Route::get('/autos', [AutosController::class, 'index']);
 
 
+
 Route::get('/autos', function () {
     return Inertia::render('Autos/index');
 });
+//Route::get('/autos', [AutosController::class, 'index'])->name('autos.index');
+
+//Rutas para mostrar Create de Autos
+Route::get('/autos/create', [AutosController::class, 'create'])->name('autos.create');
+//Ruta para metodo post
+Route::post('/autos', [AutosController::class, 'store'])->name('autos.store');

@@ -6,7 +6,7 @@
 
                 <!-- Logo y titulo-->
                 <v-img src="/images/logo.jpeg" max-height="40" max-width="120" contain></v-img>
-<!--                <v-btn text>ViaCar</v-btn>-->
+                <!--                <v-btn text>ViaCar</v-btn>-->
                 <v-spacer></v-spacer>
 
                 <!-- Navegación Nueva usando Inertia para evitar recargar toda la pagina-->
@@ -17,7 +17,7 @@
                 </v-tabs>
                 <v-spacer></v-spacer>
 
-<!--                 Botones de Login y Register -->
+                <!--                 Botones de Login y Register -->
                 <div class="d-flex gap-2">
                     <v-btn color="#00a9d4" variant="elevated" to="/login">Login</v-btn>
                     <v-btn color="#00a9d4" variant="outlined" to="/register" class="ml-2">Register</v-btn>
@@ -45,7 +45,7 @@
                             <v-carousel-item v-for="(slide, i) in slides" :key="i">
                                 <v-img :src="images[i]" height="100%" cover class="position-relative">
                                     <div class="overlay">
-<!--                                        <h2 class="text-h1 text-white font-weight-bold">{{ slide }}</h2>-->
+                                        <!--                                        <h2 class="text-h1 text-white font-weight-bold">{{ slide }}</h2>-->
                                     </div>
                                 </v-img>
                             </v-carousel-item>
@@ -100,7 +100,7 @@
                 <v-row justify="center" class="mt-10">
                     <v-col cols="12" md="4" sm="6" xs="12" v-for="n in 6" :key="n">
                         <v-card>
-<!--                            <v-img height="180" :src="`https://source.unsplash.com/400x300/?car${n}`"></v-img>-->
+                            <!--                            <v-img height="180" :src="`https://source.unsplash.com/400x300/?car${n}`"></v-img>-->
                             <v-img height="180" :src="autos[n-1]"></v-img>
                             <v-card-title>Carro de lujo {{ n }}</v-card-title>
                             <v-card-subtitle>$ {{ n * 10000 }}</v-card-subtitle>
@@ -211,52 +211,121 @@ const TabSeleccionada = ref(0);
 
 
 <style scoped>
-.overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+/* Fondo general con gradiente */
+.v-main {
+    background: linear-gradient(120deg, #f0f8ff 0%, #ffffff 100%);
+}
+
+/* Texto del título principal */
+.custom-title {
+    font-size: 3.8rem;
     font-weight: bold;
-    font-size: large;
-    padding: 20px;
-    border-radius: 10px;
-
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(45deg, #00a9d4, #007bff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-
-.custom-title{
-    font-size: 4rem;
-    font-weight: bold;
-    font-family: Apple;
+/* Títulos secundarios */
+h1.font-weight-regular {
+    font-size: 1.6rem;
+    margin-top: 10px;
+    color: #333;
 }
 
-
-.separador{
-    font-size: 2.4rem;
-    color: #00a9d4;
-    font-family: Apple;
-}
-
-.hero-features {
-    position: relative;
-    margin-top: -80px;
-    z-index: 2;
-    margin-top: 40px;
-}
-
+/* Cards de características */
 .feature-card {
     background: white;
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     height: 100%;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    border-top: 4px solid #00a9d4;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
+/* Cards de Autos */
+.v-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.v-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.v-card-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.v-card-subtitle {
+    font-size: 1rem;
+    color: #00a9d4;
+}
+
+/* Divider texto */
+.separador {
+    font-size: 2rem;
+    font-family: 'Segoe UI';
+    font-weight: 600;
+    color: #00a9d4;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Footer limpio */
+.v-footer {
+    background-color: #00a9d4 !important;
+    color: white !important;
+    padding-top: 3rem;
+}
+
+.v-footer .v-btn {
+    color: white !important;
+    transition: transform 0.2s ease;
+}
+
+.v-footer .v-btn:hover {
+    transform: scale(1.2);
+}
+
+.v-footer .text-caption {
+    font-size: 0.9rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+/* Carrusel con efecto fade */
+.v-carousel-item {
+    transition: all 0.6s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+
+
+
+/* Card "¿Por qué elegirnos?" */
+.v-card[title] {
+    margin-top: 60px;
+    padding: 2rem;
+    border-radius: 12px;
+    background: linear-gradient(to right, #e3f2fd, #ffffff);
+    border-left: 5px solid #00a9d4;
+    font-size: 1rem;
+    color: #333;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
 </style>

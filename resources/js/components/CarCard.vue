@@ -49,5 +49,28 @@ defineProps({
     background-color: rgba(0, 0, 0, 0.05);
 }
 
+.v-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.v-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.v-card-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.v-card-subtitle {
+    font-size: 1rem;
+    color: #00a9d4;
+}
+
+
 
 </style>

@@ -21,6 +21,7 @@ class Autos extends Model
         'Aire_acondicionado',
         'Detalles_desperfectos',
         'Disponibilidad_vehiculo',
-        'Precio_base'
+        'Precio_base',
+        'imagen'
     ];
 }
