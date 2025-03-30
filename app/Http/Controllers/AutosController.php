@@ -14,7 +14,22 @@ class AutosController extends Controller
     public function index()
     {
         //Devuelve todos los autos en formato JSON
-        return response()->json(Autos::all());
+//        return response()->json(Autos::all());
+
+
+//        Nueva forma de traer los carros, Ya no JSON
+        $autos = Autos::all();
+
+        // Verifica si los autos están siendo recuperados correctamente
+        if ($autos->isEmpty()) {
+            return Inertia::render('Autos/index', [
+                'autos' => [],
+            ]);
+        }
+
+        return Inertia::render('Autos/index', [
+            'autos' => $autos,
+        ]);
     }
 
     /**

@@ -38,15 +38,11 @@ defineProps({
 
 
 <style scoped>
-/* Suaviza la transición al hacer hover */
-.transition-fast {
-    transition: all 0.2s ease-in-out;
-}
+
 
 /* Efecto cuando el mouse pasa por encima */
 .on-hover {
     transform: scale(1.05);
-    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .v-card {

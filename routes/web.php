@@ -21,14 +21,16 @@ Route::get('/', function () {
 });
 
 
-//Route::get('/autos', [AutosController::class, 'index']);
 
 
 
-Route::get('/autos', function () {
-    return Inertia::render('Autos/index');
-});
-//Route::get('/autos', [AutosController::class, 'index'])->name('autos.index');
+//
+//Route::get('/autos', function () {
+//    return Inertia::render('Autos/index');
+//});
+
+//Forma Correcta de usar ruta con Inertia para traer los carros de la DB
+Route::get('/autos', [AutosController::class, 'index'])->name('autos.index');
 
 //Rutas para mostrar Create de Autos
 Route::get('/autos/create', [AutosController::class, 'create'])->name('autos.create');

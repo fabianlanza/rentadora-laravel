@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/autos', [AutosController::class, 'index']);
+
+//Ya no se necesita esta forma porque usamos el controlador ahora, no mas JSON
+//Route::get('/autos', [AutosController::class, 'index']);
