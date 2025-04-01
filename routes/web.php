@@ -20,6 +20,10 @@ Route::get('/', function () {
     return Inertia::render('Home');
 });
 
+Route::get('/contacto', function () {
+//    return view('welcome');
+    return Inertia::render('Contacto');
+});
 
 
 
@@ -36,3 +40,4 @@ Route::get('/autos', [AutosController::class, 'index'])->name('autos.index');
 Route::get('/autos/create', [AutosController::class, 'create'])->name('autos.create');
 //Ruta para metodo post
 Route::post('/autos', [AutosController::class, 'store'])->name('autos.store');
+
