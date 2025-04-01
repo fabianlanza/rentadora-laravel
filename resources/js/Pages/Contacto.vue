@@ -35,9 +35,6 @@
         <h1>Hola</h1>
 
 
-
-
-
         </v-main>
 
 
@@ -50,6 +47,10 @@
 import {ref} from "vue";
 
 const TabSeleccionada = ref(2)
+
+
+
+
 
 
 </script>
