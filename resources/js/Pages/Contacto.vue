@@ -82,6 +82,10 @@
 <!--                                                Reservar Ahora-->
 <!--                                            </v-btn>-->
 <!--                                        </v-card-actions>-->
+
+                                        <p class="titulo-custom text-center mt-10">Puedes contactarnos en ViaCar, tu empresa de renta de autos confiable. Ofrecemos vehículos en excelente
+                                            estado, con un servicio rápido y seguro para que disfrutes tu viaje sin preocupaciones. ¡Estamos aquí para
+                                            ayudarte!</p>
                                     </v-col>
 
                                     <v-col cols="12" md="6">
@@ -99,7 +103,7 @@
                                             </v-col>
                                             <v-col cols="12">
                                                 <v-img
-                                                    src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                                                    src="/images/viacar.jpeg"
                                                     height="250"
                                                     cover
                                                     class="rounded-lg"
@@ -161,5 +165,8 @@ const location = {
 
 
 <style scoped>
+.titulo-custom{
+    font-size: 20px;
 
+}
 </style>

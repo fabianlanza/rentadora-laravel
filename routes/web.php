@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\AutosController;
+use App\Http\Controllers\ReservacionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,6 @@ Route::get('/contacto', function () {
 });
 
 
-
-
 //
 //Route::get('/autos', function () {
 //    return Inertia::render('Autos/index');
@@ -41,3 +40,9 @@ Route::get('/autos/create', [AutosController::class, 'create'])->name('autos.cre
 //Ruta para metodo post
 Route::post('/autos', [AutosController::class, 'store'])->name('autos.store');
 
+
+
+//Reservaciones
+Route::get('/reserva', [ReservacionesController::class, 'index'])->name('reserva.index');
+//Ruta agarra id del auto para mandarla al controlador
+Route::get('/reserva/{id}', [ReservacionesController::class, 'show'])->name('reserva.show');

@@ -20,7 +20,9 @@
                 </v-card-text>
 
                 <v-card-actions>
-                    <v-btn color="primary">Rentar</v-btn>
+                    <!-- Ruta para llegar Id del carro a reserva -->
+                    <v-btn color="primary" @click="$inertia.get(`/reserva/${auto.id}`)">Rentar</v-btn>
+
                 </v-card-actions>
             </v-card>
         </v-col>
@@ -33,6 +35,8 @@
 defineProps({
     auto: Object
 });
+
+
 </script>
 
 
