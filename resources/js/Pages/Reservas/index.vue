@@ -43,7 +43,10 @@
                         Motor: {{ auto.motor }} <br>
                         Precio Base: ${{ auto.Precio_base }} <br>
                         Color: {{ auto.color }}<br>
-                        Ano : {{ auto.año }}
+                        Año : {{ auto.año }}<br>
+                        Numero de asientos :{{auto.Numero_asientos}}<br>
+                        Detalles :{{auto.Detalles_desperfectos}}<br>
+                        Aire :{{auto.Aire_acondicionado}}
                     </v-card-text>
                 </v-card>
                 <v-btn color="primary">Confirmar Reserva</v-btn>
