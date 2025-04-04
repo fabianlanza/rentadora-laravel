@@ -20,7 +20,7 @@
                 </v-card-text>
 
                 <v-card-actions>
-                    <!-- Ruta para llegar Id del carro a reserva -->
+                    <!-- Ruta para llevar Id del carro a reserva -->
                     <v-btn color="primary" @click="$inertia.get(`/reserva/${auto.id}`)">Rentar</v-btn>
 
                 </v-card-actions>
