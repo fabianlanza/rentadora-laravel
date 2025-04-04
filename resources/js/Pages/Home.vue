@@ -5,7 +5,7 @@
             <v-container class="d-flex justify-space-between align-center">
 
                 <!-- Logo y titulo-->
-                <v-img src="/images/logo.jpeg" max-height="40" max-width="120" contain></v-img>
+                <v-img src="/images/logo.png" max-height="40" max-width="120" contain></v-img>
                 <!--                <v-btn text>ViaCar</v-btn>-->
                 <v-spacer></v-spacer>
 

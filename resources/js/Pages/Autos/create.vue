@@ -3,7 +3,7 @@
         <!-- App Bar -->
         <v-app-bar app color="white" elevation="1">
             <v-container class="d-flex justify-space-between align-center">
-                <v-img src="/images/logo.jpeg" max-height="40" max-width="120" contain></v-img>
+                <v-img src="/images/logo.png" max-height="40" max-width="120" contain></v-img>
                 <v-spacer></v-spacer>
                 <v-tabs v-model="TabSeleccionada" centered>
                     <v-tab tag="div" @click="$inertia.get('/')">Inicio</v-tab>
@@ -191,6 +191,8 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
 import {ref} from "vue";
+import Swal from 'sweetalert2';
+
 
 const form = useForm({
     marca: '',
@@ -208,10 +210,33 @@ const form = useForm({
 });
 
 const submit = () => {
+    // Verificar que todos los campos están completos
+    if (!form.marca || !form.modelo || !form.motor || !form.color ||
+        !form.año || !form.placa || !form.Numero_asientos ||
+        !form.Aire_acondicionado || !form.Detalles_desperfectos ||
+        !form.Precio_base || !form.imagen) {
+
+        Swal.fire({
+            title: "Formulario incompleto",
+            text: "Por favor, completa todos los campos antes de guardar.",
+            icon: "warning",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#ff9800",
+        });
+        return; // Detener la ejecución si algún campo está vacío
+    }
+
+    // Si todos los campos están completos, proceder con el envío
     form.post('/autos', {
         forceFormData: true,
         onSuccess: () => {
-            alert('🚗 Auto agregado correctamente!');
+            Swal.fire({
+                title: "¡Auto agregado!",
+                text: "El auto se ha agregado correctamente.",
+                icon: "success",
+                confirmButtonText: "OK",
+                confirmButtonColor: "#00a9d4",
+            });
             form.reset();
         },
     });
@@ -229,8 +254,6 @@ const submit = () => {
 .custom-form .v-input__control {
     transition: box-shadow 0.3s ease;
 }
-
-
 
 
 </style>

@@ -3,7 +3,7 @@
         <!-- Nav Bar-->
         <v-app-bar app color="#eeeeee" elevation="0">
             <v-container class="d-flex justify-space-between align-center">
-                <v-img src="/images/logo.jpeg" max-height="40" max-width="120" contain></v-img>
+                <v-img src="/images/logo.png" max-height="40" max-width="120" contain></v-img>
                 <v-spacer></v-spacer>
 
                 <v-tabs v-model="TabSeleccionada" centered>
