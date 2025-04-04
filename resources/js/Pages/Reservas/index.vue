@@ -41,7 +41,9 @@
                     <v-card-title>{{ auto.marca }} - {{ auto.modelo }}</v-card-title>
                     <v-card-text>
                         Motor: {{ auto.motor }} <br>
-                        Precio Base: ${{ auto.Precio_base }}
+                        Precio Base: ${{ auto.Precio_base }} <br>
+                        Color: {{ auto.color }}<br>
+                        Ano : {{ auto.año }}
                     </v-card-text>
                 </v-card>
                 <v-btn color="primary">Confirmar Reserva</v-btn>
