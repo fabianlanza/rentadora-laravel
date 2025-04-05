@@ -20,8 +20,8 @@
 
                 <!--                 Botones de Login y Register -->
                 <div class="d-flex gap-2">
-                    <v-btn color="#00a9d4" variant="elevated" to="/login">Login</v-btn>
-                    <v-btn color="#00a9d4" variant="outlined" to="/register" class="ml-2">Register</v-btn>
+                    <v-btn color="#00a9d4" variant="elevated" @click="$inertia.get('/login')">Login</v-btn>
+                    <v-btn color="#00a9d4" variant="outlined" @click="$inertia.get('/register')" class="ml-2">Register</v-btn>
                 </div>
             </v-container>
         </v-app-bar>
