@@ -7,7 +7,7 @@
                 <v-spacer></v-spacer>
 
                 <!-- Navegación usando Inertia -->
-                <v-tabs v-model="TabSeleccionada" centered>
+                <v-tabs v-model="TabActiva" centered>
                     <v-tab tag="div" @click="$inertia.get('/')">Inicio</v-tab>
                     <v-tab tag="div" @click="$inertia.get('/autos')">Autos</v-tab>
                     <v-tab tag="div" @click="$inertia.get('/contacto')">Contacto</v-tab>
@@ -99,12 +99,22 @@
     </v-app>
 </template>
 
+
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import { ref } from "vue";
 import { router } from '@inertiajs/vue3';
 
-const TabSeleccionada = ref(0);
+// Acepta la tab activa como prop y pone defecto 0
+const props = defineProps({
+    TabSeleccionada: {
+        type: Number,
+        default: 0,
+    },
+});
+const TabActiva = ref(props.TabSeleccionada);
+
+
 
 // iconos del Footer
 const icons = [
@@ -118,7 +128,12 @@ const icons = [
 const logout = () => {
     router.post('/logout');
 };
+
+
 </script>
+
+
+
 
 <style scoped>
 /* Fondo general con gradiente */
