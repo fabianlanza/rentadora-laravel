@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_cliente');
             $table->string('cedula');
-            // $table->unsignedBigInteger('fk_cliente');
-            // $table->foreign('fk_cliente')->references('id')->on('clientes');
+            $table->unsignedBigInteger('fk_user')->nullable();
+            $table->foreign('fk_user')->references('id')->on('users');
             // $table->unsignedBigInteger('fk_seguros');
             // $table->foreign('fk_seguros')->references('id')->on('seguros');
             $table->string('seguro');

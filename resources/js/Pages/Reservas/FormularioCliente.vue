@@ -7,7 +7,8 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 
 const props = defineProps({
-    auto: Object // Recibe los datos del auto desde Laravel
+    auto: Object, // Recibe los datos del auto desde Laravel
+    auth: Object  // Añadir para recibir la información del usuario autenticado
 });
 
 const form = useForm({
@@ -46,6 +47,7 @@ const submit = () => {
     // Asignar directamente al objeto form los valores calculados
     form.seguro = form.acepta_seguro ? 'si' : 'no';
     form.fk_auto = props.auto?.id;
+    form.fk_user = props.auth?.user?.id; // Añadir el ID del usuario autenticado
     form.cantidad_dias_reservado = diasReservados.value;
     
     // Enviar directamente el formulario
@@ -56,6 +58,7 @@ const submit = () => {
         fecha_fin: form.fecha_fin,
         seguro: form.seguro,
         fk_auto: form.fk_auto,
+        fk_user: form.fk_user, // Añadir el ID del usuario
         cantidad_dias_reservado: form.cantidad_dias_reservado
     })
     .then(response => {

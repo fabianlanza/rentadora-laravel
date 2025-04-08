@@ -15,11 +15,18 @@ class Reservaciones extends Model
         'nombre_cliente',
         'cedula',
         'seguro',
-        'fk_auto', // Changed from auto_id to fk_auto to match migration
+        'fk_auto',
+        'fk_user', // Add this line
         'fecha_inicio',
         'fecha_fin',
-        'cantidad_dias_reservado', // Changed from dias_reservados to match migration
+        'cantidad_dias_reservado',
     ];
+    
+    // Define relationship with User model
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'fk_user');
+    }
     
     // Define relationship with Auto model
     public function auto()

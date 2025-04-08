@@ -33,17 +33,19 @@ class ReservacionesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre_cliente' => 'required|string|max:255',
-            'cedula' => 'required|string',
+        $validated = $request->validate([
+            'nombre_cliente' => 'required',
+            'cedula' => 'required',
             'fecha_inicio' => 'required|date',
-            'fecha_fin' => 'required|date|after_or_equal:fecha_inicio',
-            'seguro' => 'required|string|in:si,no',
+            'fecha_fin' => 'required|date',
+            'seguro' => 'required',
             'fk_auto' => 'required|exists:autos,id',
-            'cantidad_dias_reservado' => 'required|integer|min:1',
+            'fk_user' => 'nullable|exists:users,id', // Add this line
+            'cantidad_dias_reservado' => 'required|integer',
         ]);
         
-        Reservaciones::create($request->all());
+        // Create the reservation with all data including user ID
+        $reservacion = Reservaciones::create($validated);
         
         return redirect()->route('autos.index')->with('success', 'Reserva creada exitosamente');
     }
