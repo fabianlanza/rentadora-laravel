@@ -3,7 +3,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm, router } from '@inertiajs/vue3';
 import { ref, computed, defineProps} from 'vue'
-defineProps({
+const props = defineProps({
     auto: Object // Recibe los datos del auto desde Laravel
 });
 
@@ -11,9 +11,17 @@ const form = useForm({
     nombre_cliente: '',
     fecha_inicio: '',
     fecha_fin: '',
-    acepta_seguro: ''
+    acepta_seguro: null
 
 });
+
+
+const segurosOptions = [
+    { text: 'Si lo quiero', value: true },
+    { text: 'No lo quiero', value: false }
+]
+
+
 const submit = () => {
     form.post(route('reserva.index'), {  // Asegúrate de usar la ruta correcta
         // onFinish: () => form.reset('nombre', 'descripcion'),
@@ -30,6 +38,15 @@ const diasReservados = computed(() => {
     const end = new Date(form.fecha_fin)
     const diff = Math.ceil((end - start) / (1000 * 60 * 60 * 24))
     return diff > 0 ? diff : 0
+})
+
+const totalAPagar = computed(() => {
+    // Precio base por día (asegurarse de que sea un número)
+    const precioPorDia = Number(props.auto?.Precio_base || 0)
+    // Costo del seguro ($50 si lo quiere, $0 si no)
+    const costoSeguro = form.acepta_seguro === true ? 50 : 0
+    // Total = (precio base * días) + seguro
+    return (precioPorDia * diasReservados.value) + costoSeguro
 })
 
 
@@ -216,7 +233,7 @@ const diasReservados = computed(() => {
                         <v-text-field
                             v-model="form.nombre_cliente"
 
-                            label="Nombre de Médicos"
+                            label="Nombre de Cliente"
                         ></v-text-field>
 
                         <!-- Fecha de inicio -->
@@ -239,19 +256,34 @@ const diasReservados = computed(() => {
                         <v-select
                             v-model="form.acepta_seguro"
                             label="¿Acepta el seguro del vehículo?"
-                            :items="[
-            { text: 'Si lo quiero', value: true },
-            { text: 'No lo quiero', value: false }
-          ]"
-
+                            :items="segurosOptions"
+                            item-value="value"
+                            item-title="text"
+                            variant="outlined"
+                            density="comfortable"
                         ></v-select>
 
                         <!-- Días reservados -->
-                        <v-text-field
-                            label="Días Reservados"
-                            :value="diasReservados"
-                            readonly
-                        ></v-text-field>
+                        <div class="d-flex align-center justify-space-between my-4 pa-3 bg-grey-lighten-4 rounded">
+                            <div class="d-flex align-center">
+                                <v-icon color="primary" class="mr-3">mdi-calendar-range</v-icon>
+                                <div>
+                                    <div class="text-subtitle-2 font-weight-medium">Días Reservados:</div>
+                                    <div class="text-h6 font-weight-bold">{{ diasReservados }}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex align-center">
+                                <v-icon color="success" class="mr-3">mdi-cash</v-icon>
+                                <div>
+                                    <div class="text-subtitle-2 font-weight-medium">Total a Pagar:</div>
+                                    <div class="text-h6 font-weight-bold text-success">${{ totalAPagar }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
 
                         <!-- Estado del vehículo -->
                         <v-alert type="info" class="my-3">
