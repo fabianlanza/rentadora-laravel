@@ -45,7 +45,10 @@ class ReservacionesController extends Controller
         $auto = Autos::findOrFail($id); // Busca el auto por ID
         return Inertia::render('Reservas/index', ['auto' => $auto]); // Envia el auto a la vista
     }
-
+    public function make($ide){
+        $auto = Autos::findOrFail($ide);
+        return Inertia::render('Reservas/FormularioCliente', ['auto' => $auto]);
+    }
     /**
      * Show the form for editing the specified resource.
      */
