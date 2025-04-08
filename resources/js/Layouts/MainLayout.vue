@@ -53,6 +53,15 @@
                                     <v-btn
                                         variant="text"
                                         block
+                                        @click="$inertia.get('/profile')"
+                                    >
+                                        <v-icon start>mdi-account</v-icon>
+                                        Reservas Activas
+                                    </v-btn>
+                                    <v-divider class="my-2"></v-divider>
+                                    <v-btn
+                                        variant="text"
+                                        block
                                         @click="logout"
                                         color="red"
                                     >
