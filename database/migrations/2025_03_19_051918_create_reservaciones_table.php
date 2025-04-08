@@ -13,15 +13,18 @@ return new class extends Migration
     {
         Schema::create('reservaciones', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('fk_cliente');
-            $table->foreign('fk_cliente')->references('id')->on('clientes');
-            $table->unsignedBigInteger('fk_seguros');
-            $table->foreign('fk_seguros')->references('id')->on('seguros');
+            $table->string('nombre_cliente');
+            $table->string('cedula');
+            // $table->unsignedBigInteger('fk_cliente');
+            // $table->foreign('fk_cliente')->references('id')->on('clientes');
+            // $table->unsignedBigInteger('fk_seguros');
+            // $table->foreign('fk_seguros')->references('id')->on('seguros');
+            $table->string('seguro');
             $table->unsignedBigInteger('fk_auto');
             $table->foreign('fk_auto')->references('id')->on('autos');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->boolean('Disponibilidad_vehiculo');
+            // $table->boolean('Disponibilidad_vehiculo');
             $table->integer('cantidad_dias_reservado');
             $table->timestamps();
         });
