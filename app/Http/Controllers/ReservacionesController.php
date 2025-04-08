@@ -66,27 +66,20 @@ class ReservacionesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Reservaciones $reservaciones)
+    public function edit()
     {
-        //
-        $reservas = Reservaciones::with('auto')
-            //->where('disponibilidad_vehiculo', 'activa') // si así defines una reserva activa
-            ->get()
-            ->map(function ($reserva) {
-                return [
-                    'id' => $reserva->id,
-                    'marca' => $reserva->auto->marca,
-                    'modelo' => $reserva->auto->modelo,
-                    'motor' => $reserva->auto->motor,
-                    'año' => $reserva->auto->año,
-                    'placa' => $reserva->auto->placa,
-                    'Numero_asientos' => $reserva->auto->Numero_asientos,
-                    'imagen' => $reserva->auto->imagen,
-                ];
-            });
-
+        // Get all reservations with their associated auto information
+        $reservas = Reservaciones::with('auto')->get()->map(function ($reserva) {
+            // Merge auto details with reservation
+            return array_merge(
+                $reserva->toArray(),
+                $reserva->auto ? $reserva->auto->toArray() : []
+            );
+        });
+    
         return Inertia::render('Reservas/edit', [
             'reservas' => $reservas,
+            // Auth is automatically included in Inertia shared data, but making it explicit here
         ]);
     }
 
