@@ -12,13 +12,18 @@ class Reservaciones extends Model
     // use softDeletes;
     
     protected $fillable = [
-
-        'fk_cliente',
-        'fk_seguro',
-        'fk_auto',
+        'nombre_cliente',
+        'cedula',
+        'seguro',
+        'fk_auto', // Changed from auto_id to fk_auto to match migration
         'fecha_inicio',
         'fecha_fin',
-        'disponibilidad_vehiculo',
-        'cantidad_dias_reservado'
+        'cantidad_dias_reservado', // Changed from dias_reservados to match migration
     ];
+    
+    // Define relationship with Auto model
+    public function auto()
+    {
+        return $this->belongsTo(Autos::class, 'fk_auto');
+    }
 }

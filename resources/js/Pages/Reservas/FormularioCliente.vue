@@ -3,6 +3,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm, router } from '@inertiajs/vue3';
 import { ref, computed, defineProps} from 'vue'
+import Swal from 'sweetalert2';
+import axios from 'axios';
+
 const props = defineProps({
     auto: Object // Recibe los datos del auto desde Laravel
 });
@@ -11,22 +14,73 @@ const form = useForm({
     nombre_cliente: '',
     fecha_inicio: '',
     fecha_fin: '',
-    acepta_seguro: null
-
+    acepta_seguro: null,
+    cedula: '',  // Add this field for the cedula
+    auto_id: props.auto?.id,
+    dias_reservados: 0,
+    precio_total: 0
 });
 
 
 const segurosOptions = [
-    { text: 'Si lo quiero', value: true },
-    { text: 'No lo quiero', value: false }
+    { text: 'si', value: true },
+    { text: 'no', value: false }
 ]
 
 
 const submit = () => {
-    form.post(route('reserva.index'), {  // Asegúrate de usar la ruta correcta
-        // onFinish: () => form.reset('nombre', 'descripcion'),
+    // Verificar que todos los campos están completos
+    if (!form.nombre_cliente || !form.cedula || !form.fecha_inicio || 
+        !form.fecha_fin || form.acepta_seguro === null) {
+
+        Swal.fire({
+            title: "Formulario incompleto",
+            text: "Por favor, completa todos los campos antes de guardar.",
+            icon: "warning",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#ff9800",
+        });
+        return; // Detener la ejecución si algún campo está vacío
+    }
+
+    // Asignar directamente al objeto form los valores calculados
+    form.seguro = form.acepta_seguro ? 'si' : 'no';
+    form.fk_auto = props.auto?.id;
+    form.cantidad_dias_reservado = diasReservados.value;
+    
+    // Enviar directamente el formulario
+    axios.post(route('reservas.store'), {
+        nombre_cliente: form.nombre_cliente,
+        cedula: form.cedula,
+        fecha_inicio: form.fecha_inicio,
+        fecha_fin: form.fecha_fin,
+        seguro: form.seguro,
+        fk_auto: form.fk_auto,
+        cantidad_dias_reservado: form.cantidad_dias_reservado
+    })
+    .then(response => {
+        Swal.fire({
+            title: "¡Reserva creada!",
+            text: "La reserva se ha creado correctamente.",
+            icon: "success",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#00a9d4",
+        });
+        router.visit('/autos');
+    })
+    .catch(error => {
+        console.error('Error al crear la reserva:', error);
+        Swal.fire({
+            title: "Error",
+            text: "Hubo un problema al crear la reserva. Por favor, verifica los datos.",
+            icon: "error",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#f44336",
+        });
     });
 };
+
+
 const TabSeleccionada = ref(1)
 
 
@@ -51,7 +105,12 @@ const totalAPagar = computed(() => {
 
 
 
+
+
 </script>
+
+
+
 <style scoped>
 
 .fondo-principal {
@@ -234,6 +293,13 @@ const totalAPagar = computed(() => {
                             v-model="form.nombre_cliente"
 
                             label="Nombre de Cliente"
+                        ></v-text-field>
+
+                        <!-- Cédula del cliente -->
+                        <v-text-field
+                            v-model="form.cedula"
+                            label="Número de Cédula"
+                            required
                         ></v-text-field>
 
                         <!-- Fecha de inicio -->

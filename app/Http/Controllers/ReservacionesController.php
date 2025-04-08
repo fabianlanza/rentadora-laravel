@@ -33,7 +33,19 @@ class ReservacionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre_cliente' => 'required|string|max:255',
+            'cedula' => 'required|string',
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'required|date|after_or_equal:fecha_inicio',
+            'seguro' => 'required|string|in:si,no',
+            'fk_auto' => 'required|exists:autos,id',
+            'cantidad_dias_reservado' => 'required|integer|min:1',
+        ]);
+        
+        Reservaciones::create($request->all());
+        
+        return redirect()->route('autos.index')->with('success', 'Reserva creada exitosamente');
     }
 
     /**
