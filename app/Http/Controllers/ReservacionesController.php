@@ -52,6 +52,25 @@ class ReservacionesController extends Controller
     public function edit(Reservaciones $reservaciones)
     {
         //
+        $reservas = Reservaciones::with('auto')
+            //->where('disponibilidad_vehiculo', 'activa') // si así defines una reserva activa
+            ->get()
+            ->map(function ($reserva) {
+                return [
+                    'id' => $reserva->id,
+                    'marca' => $reserva->auto->marca,
+                    'modelo' => $reserva->auto->modelo,
+                    'motor' => $reserva->auto->motor,
+                    'año' => $reserva->auto->año,
+                    'placa' => $reserva->auto->placa,
+                    'Numero_asientos' => $reserva->auto->Numero_asientos,
+                    'imagen' => $reserva->auto->imagen,
+                ];
+            });
+
+        return Inertia::render('Reservas/edit', [
+            'reservas' => $reservas,
+        ]);
     }
 
     /**

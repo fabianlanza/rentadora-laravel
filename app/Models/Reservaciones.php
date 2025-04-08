@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Reservaciones extends Model
 {
     use HasFactory;
-    use softDeletes;
+    // use softDeletes;
+    
     protected $fillable = [
 
         'fk_cliente',

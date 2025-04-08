@@ -53,7 +53,7 @@
                                     <v-btn
                                         variant="text"
                                         block
-                                        @click="$inertia.get('/profile')"
+                                        @click="$inertia.get('/reservasActivas')"
                                     >
                                         <v-icon start>mdi-account</v-icon>
                                         Reservas Activas

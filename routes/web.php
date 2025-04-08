@@ -74,6 +74,8 @@ Route::middleware('auth')->group(function () {
     //Ruta agarra id del auto para mandarla al controlador
     Route::get('/reserva/{id}', [ReservacionesController::class, 'show'])->name('reserva.show');
 
+    //Ruta para mostrar reservaciones
+    Route::get('/reservasActivas', [ReservacionesController::class, 'edit'])->name('reservasActivas.edit');
 
 });
 
