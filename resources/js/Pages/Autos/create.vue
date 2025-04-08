@@ -1,7 +1,7 @@
 <template>
-    <v-app>
+    <!-- <v-app> -->
         <!-- App Bar -->
-        <v-app-bar app color="white" elevation="1">
+        <!-- <v-app-bar app color="white" elevation="1">
             <v-container class="d-flex justify-space-between align-center">
                 <v-img src="/images/logo.png" max-height="40" max-width="120" contain></v-img>
                 <v-spacer></v-spacer>
@@ -16,10 +16,11 @@
                     <v-btn color="#00a9d4" variant="outlined" to="/register">Register</v-btn>
                 </div>
             </v-container>
-        </v-app-bar>
+        </v-app-bar> -->
 
         <!-- Main Content -->
-        <v-main class="form-background">
+        <!-- <v-main class="form-background"> -->
+            <MainLayout TabSeleccionada="1">
             <v-container>
                 <v-card
                     class="pa-6 mx-auto mt-10"
@@ -184,11 +185,11 @@
                     </v-form>
                 </v-card>
             </v-container>
-        </v-main>
-    </v-app>
+        </MainLayout>
 </template>
 
 <script setup>
+import MainLayout from '@/Layouts/MainLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 import {ref} from "vue";
 import Swal from 'sweetalert2';

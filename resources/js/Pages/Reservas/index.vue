@@ -1,28 +1,8 @@
 
 
 <template>
-    <v-app>
-        <!-- Nav Bar-->
-        <v-app-bar app color="#eeeeee" elevation="0">
-            <v-container class="d-flex justify-space-between align-center">
-                <v-img src="/images/logo.png" max-height="40" max-width="120" contain></v-img>
-                <v-spacer></v-spacer>
 
-                <v-tabs v-model="TabSeleccionada" centered>
-                    <v-tab tag="div" @click="$inertia.get('/')">Inicio</v-tab>
-                    <v-tab tag="div" @click="$inertia.get('/autos')">Autos</v-tab>
-                    <v-tab tag="div" @click="$inertia.get('/contacto')">Contacto</v-tab>
-                </v-tabs>
-                <v-spacer></v-spacer>
-
-                <div class="d-flex gap-2">
-                    <v-btn color="#00a9d4" variant="elevated" to="/login">Login</v-btn>
-                    <v-btn color="#00a9d4" variant="outlined" to="/register" class="ml-2">Register</v-btn>
-                </div>
-            </v-container>
-        </v-app-bar>
-
-        <v-main class="fondo-principal">
+            <MainLayout TabSeleccionada="1">
             <v-container class="py-12">
                 <v-row justify="center">
                     <v-col cols="12" md="10">
@@ -145,11 +125,12 @@
                     </v-col>
                 </v-row>
             </v-container>
-        </v-main>
-    </v-app>
+        </MainLayout>
+
 </template>
 
 <script setup>
+import MainLayout from '@/Layouts/MainLayout.vue';
 import {defineProps, ref} from 'vue';
 
 defineProps({
