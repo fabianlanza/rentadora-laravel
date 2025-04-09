@@ -24,12 +24,11 @@ import CarCard from '@/components/CarCard.vue';
 
 // Recibimos los autos como propiedad del controlador a través de Inertia
 const props = defineProps({
-    autos: Array, // Asegúrate de que sea un array de autos
+    autos: Array, 
 });
 
 
-// Constante para decirle a las tab que Autos esta seleccionado
-// const TabSeleccionada = ref(1);
+
 </script>
 
 <style scoped>

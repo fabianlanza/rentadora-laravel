@@ -41,7 +41,7 @@ class ReservacionesController extends Controller
             'fecha_fin' => 'required|date',
             'seguro' => 'required',
             'fk_auto' => 'required|exists:autos,id',
-            'fk_user' => 'nullable|exists:users,id', // Add this line
+            'fk_user' => 'nullable|exists:users,id',
             'cantidad_dias_reservado' => 'required|integer',
         ]);
         
@@ -69,9 +69,9 @@ class ReservacionesController extends Controller
      */
     public function edit()
     {
-        // Get all reservations with their associated auto information
+        // Trae informacion de la reservacion y el auto asociado
         $reservas = Reservaciones::with('auto')->get()->map(function ($reserva) {
-            // Merge auto details with reservation
+            // Merge detalles del auto con la reserva
             return array_merge(
                 $reserva->toArray(),
                 $reserva->auto ? $reserva->auto->toArray() : []
