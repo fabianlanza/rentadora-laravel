@@ -16,19 +16,19 @@ class Reservaciones extends Model
         'cedula',
         'seguro',
         'fk_auto',
-        'fk_user', // Add this line
+        'fk_user', 
         'fecha_inicio',
         'fecha_fin',
         'cantidad_dias_reservado',
     ];
     
-    // Define relationship with User model
+    // Define relacion con Modelo User
     public function user()
     {
         return $this->belongsTo(User::class, 'fk_user');
     }
     
-    // Define relationship with Auto model
+    // Define relacion con Modelo Autos
     public function auto()
     {
         return $this->belongsTo(Autos::class, 'fk_auto');
