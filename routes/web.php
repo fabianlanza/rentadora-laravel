@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
 
     //-------------------------AUTOS---------------------------------------
     //Rutas para mostrar Create de Autos
-    Route::get('/autos/create', [AutosController::class, 'create'])->name('autos.create');
+    // Route::get('/autos/create', [AutosController::class, 'create'])->name('autos.create');
     //Ruta para metodo post
     Route::post('/autos', [AutosController::class, 'store'])->name('autos.store');
 
@@ -84,6 +84,8 @@ Route::middleware('auth')->group(function () {
     // Admin routes
     Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/admin/reservas', [ReservacionesController::class, 'adminIndex'])->name('admin.reservas');
+
+        Route::get('/autos/create', [AutosController::class, 'create'])->name('autos.create');
     });
 
     

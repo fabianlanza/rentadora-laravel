@@ -68,7 +68,7 @@
                         <v-card-title>Carro de lujo {{ n }}</v-card-title>
                         <v-card-subtitle>$ {{ n * 10000 }}</v-card-subtitle>
                         <v-card-actions>
-                            <v-btn color="primary">Rentar</v-btn>
+                            <!-- <v-btn color="primary">Rentar</v-btn> -->
                         </v-card-actions>
                     </v-card>
                 </v-col>

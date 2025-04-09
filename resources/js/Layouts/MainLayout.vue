@@ -55,12 +55,12 @@
                                         block
                                         @click="$inertia.get('/reservasActivas')"
                                     >
-                                        <v-icon start>mdi-account</v-icon>
+                                        <v-icon start>mdi-view-dashboard</v-icon>
                                         Mis Reservas
                                     </v-btn>
                                     <v-divider class="my-2"></v-divider>
                                     
-                                    <!-- Admin option - only visible for admin users -->
+                                    <!-- Admin  - solo visible para admins-->
                                     <template v-if="isAdmin">
                                         <v-btn
                                             variant="text"
@@ -69,6 +69,19 @@
                                         >
                                             <v-icon start>mdi-view-dashboard</v-icon>
                                             Panel de Reservas
+                                        </v-btn>
+                                        <v-divider class="my-2"></v-divider>
+                                    </template>
+
+                                    <!-- Admin  - solo visible para admins-->
+                                    <template v-if="isAdmin">
+                                        <v-btn
+                                            variant="text"
+                                            block
+                                            @click="$inertia.get('/autos/create')"
+                                        >
+                                            <v-icon start>mdi-car</v-icon>
+                                            Agregar Auto
                                         </v-btn>
                                         <v-divider class="my-2"></v-divider>
                                     </template>
