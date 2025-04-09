@@ -79,6 +79,14 @@ Route::middleware('auth')->group(function () {
     //Route::get('/formcliente',[ReservacionesController::class, 'create'])->name('formcliente');
     Route::get('reservaciones-formulario/{id}',[ReservacionesController::class, 'make'])->name('reservaciones-formulario');
     Route::post('/reservas', [ReservacionesController::class, 'store'])->name('reservas.store');
+
+
+    // Admin routes
+    Route::middleware(['auth', 'admin'])->group(function () {
+        Route::get('/admin/reservas', [ReservacionesController::class, 'adminIndex'])->name('admin.reservas');
+    });
+
+    
 });
 
 require __DIR__.'/auth.php';

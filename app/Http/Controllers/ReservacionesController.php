@@ -6,6 +6,7 @@ use App\Models\Reservaciones;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Autos;
+use App\Models\User;
 
 class ReservacionesController extends Controller
 {
@@ -97,5 +98,33 @@ class ReservacionesController extends Controller
     public function destroy(Reservaciones $reservaciones)
     {
         //
+    }
+
+    /**
+     * Display all reservations for admin
+     */
+    public function adminIndex()
+    {
+        // Get all reservations with their associated auto information
+        // Using the same approach as in the edit method
+        $reservaciones = Reservaciones::with('auto')->get()->map(function ($reserva) {
+            // Merge auto details with reservation
+            return array_merge(
+                $reserva->toArray(),
+                $reserva->auto ? $reserva->auto->toArray() : []
+            );
+        });
+        
+        // Count statistics for dashboard
+        $totalClientes = User::count();
+        $cochesDisponibles = Autos::where('Disponibilidad_vehiculo', true)->count();
+        $reservacionesActivas = Reservaciones::count();
+        
+        return Inertia::render('Reservas/admin', [
+            'reservaciones' => $reservaciones,
+            'totalClientes' => $totalClientes,
+            'cochesDisponibles' => $cochesDisponibles,
+            'reservacionesActivas' => $reservacionesActivas
+        ]);
     }
 }

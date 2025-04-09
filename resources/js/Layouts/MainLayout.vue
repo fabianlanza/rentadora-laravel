@@ -56,9 +56,23 @@
                                         @click="$inertia.get('/reservasActivas')"
                                     >
                                         <v-icon start>mdi-account</v-icon>
-                                        Reservas Activas
+                                        Mis Reservas
                                     </v-btn>
                                     <v-divider class="my-2"></v-divider>
+                                    
+                                    <!-- Admin option - only visible for admin users -->
+                                    <template v-if="isAdmin">
+                                        <v-btn
+                                            variant="text"
+                                            block
+                                            @click="$inertia.get('/admin/reservas')"
+                                        >
+                                            <v-icon start>mdi-view-dashboard</v-icon>
+                                            Panel de Reservas
+                                        </v-btn>
+                                        <v-divider class="my-2"></v-divider>
+                                    </template>
+                                    
                                     <v-btn
                                         variant="text"
                                         block
@@ -86,8 +100,9 @@
             <div class="d-flex ga-3">
                 <v-btn
                     v-for="icon in icons"
-                    :key="icon"
-                    :icon="icon"
+                    :key="icon.icon"
+                    :icon="icon.icon"
+                    :href="icon.link"
                     density="comfortable"
                     variant="text"
                 ></v-btn>
@@ -111,8 +126,8 @@
 
 <script setup>
 import { Link } from '@inertiajs/vue3';
-import { ref } from "vue";
-import { router } from '@inertiajs/vue3';
+import { ref, computed } from "vue";
+import { router, usePage } from '@inertiajs/vue3';
 
 // Acepta la tab activa como prop y pone defecto 0
 const props = defineProps({
@@ -123,22 +138,24 @@ const props = defineProps({
 });
 const TabActiva = ref(props.TabSeleccionada);
 
+// Check if the current user is an admin
+const isAdmin = computed(() => {
+    const user = usePage().props.auth.user;
+    return user && user.role === 'admin';
+});
 
-
-// iconos del Footer
+// iconos del Footer con sus enlaces
 const icons = [
-    'mdi-facebook',
-    'mdi-twitter',
-    'mdi-linkedin',
-    'mdi-instagram',
+    { icon: 'mdi-facebook', link: 'https://www.facebook.com/unicahoficial' },
+    // { icon: 'mdi-twitter', link: 'https://twitter.com/viacar' },
+    { icon: 'mdi-linkedin', link: 'https://www.linkedin.com/' },
+    { icon: 'mdi-instagram', link: 'https://www.instagram.com/unicahoficial/' },
 ];
 
 // Función para cerrar sesión
 const logout = () => {
     router.post('/logout');
 };
-
-
 </script>
 
 
