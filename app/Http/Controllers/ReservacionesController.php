@@ -8,6 +8,11 @@ use Inertia\Inertia;
 use App\Models\Autos;
 use App\Models\User;
 
+
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationConfirmation;
+
 class ReservacionesController extends Controller
 {
     /**
@@ -47,8 +52,12 @@ class ReservacionesController extends Controller
         
         // Create the reservation with all data including user ID
         $reservacion = Reservaciones::create($validated);
+
+        // Enviar correo de confirmación
+        Mail::to($request->user()->email)->send(new ReservationConfirmation($reservacion));
         
         return redirect()->route('autos.index')->with('success', 'Reserva creada exitosamente');
+         
     }
 
     /**
